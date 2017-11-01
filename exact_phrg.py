@@ -415,6 +415,9 @@ def get_hrg_production_rules (edgelist_data_frame, graph_name, tw=False,
 	hStars = grow_exact_size_hrg_graphs_from_prod_rules(rules, graph_name, G.number_of_nodes(), 10)
 	print '... hStart graphs:', len(hStars)
 	d = {graph_name + "_hstars": hStars}
+	
+	if not os.path.exists(r"Results/"): os.makedirs(r"Results/")
+
 	with open(r"Results/{}_hstars.pickle".format(graph_name), "wb") as output_file:
 		cPickle.dump(d, output_file)
 	if os.path.exists(r"Results/{}_hstars.pickle".format(graph_name)): print "File saved"
